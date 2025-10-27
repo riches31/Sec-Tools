@@ -1,0 +1,128 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background -->
+  <rect width="800" height="600" fill="#f8fafc"/>
+  
+  <!-- Title -->
+  <text x="400" y="40" font-family="Arial, sans-serif" font-size="24" font-weight="bold" text-anchor="middle" fill="#1e293b">
+    Security Tools Suite - Custom Icons
+  </text>
+  
+  <!-- Grid Layout -->
+  
+  <!-- Icon 1: Browser Security Scanner -->
+  <g transform="translate(100, 100)">
+    <rect width="140" height="140" rx="12" fill="#dbeafe" stroke="#3b82f6" stroke-width="2"/>
+    <text x="70" y="160" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#1e40af" font-weight="bold">
+      Browser Security
+    </text>
+    
+    <!-- Globe with Shield -->
+    <circle cx="70" cy="70" r="35" fill="none" stroke="#3b82f6" stroke-width="3"/>
+    <ellipse cx="70" cy="70" rx="15" ry="35" fill="none" stroke="#3b82f6" stroke-width="2"/>
+    <line x1="35" y1="70" x2="105" y2="70" stroke="#3b82f6" stroke-width="2"/>
+    <line x1="70" y1="35" x2="70" y2="105" stroke="#3b82f6" stroke-width="2"/>
+    
+    <!-- Shield overlay -->
+    <path d="M 70 45 L 80 50 L 80 70 Q 80 80 70 85 Q 60 80 60 70 L 60 50 Z" fill="#3b82f6" opacity="0.8"/>
+    <path d="M 65 65 L 68 68 L 75 58" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  
+  <!-- Icon 2: Domain Security Checker -->
+  <g transform="translate(300, 100)">
+    <rect width="140" height="140" rx="12" fill="#d1fae5" stroke="#10b981" stroke-width="2"/>
+    <text x="70" y="160" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#065f46" font-weight="bold">
+      Domain Checker
+    </text>
+    
+    <!-- Domain/Server icon -->
+    <rect x="45" y="45" width="50" height="50" rx="4" fill="none" stroke="#10b981" stroke-width="3"/>
+    <line x1="50" y1="60" x2="90" y2="60" stroke="#10b981" stroke-width="2"/>
+    <line x1="50" y1="75" x2="90" y2="75" stroke="#10b981" stroke-width="2"/>
+    <circle cx="60" cy="52" r="3" fill="#10b981"/>
+    <circle cx="75" cy="52" r="3" fill="#10b981"/>
+    
+    <!-- Lock symbol -->
+    <rect x="60" y="75" width="20" height="15" rx="2" fill="#10b981"/>
+    <path d="M 65 75 L 65 70 Q 65 65 70 65 Q 75 65 75 70 L 75 75" fill="none" stroke="#10b981" stroke-width="2.5"/>
+    <circle cx="70" cy="82" r="2" fill="#d1fae5"/>
+  </g>
+  
+  <!-- Icon 3: Password Strength Checker -->
+  <g transform="translate(500, 100)">
+    <rect width="140" height="140" rx="12" fill="#e9d5ff" stroke="#a855f7" stroke-width="2"/>
+    <text x="70" y="160" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#6b21a8" font-weight="bold">
+      Password Checker
+    </text>
+    
+    <!-- Key icon -->
+    <circle cx="60" cy="60" r="12" fill="none" stroke="#a855f7" stroke-width="3"/>
+    <circle cx="60" cy="60" r="5" fill="#a855f7"/>
+    <rect x="70" y="57" width="25" height="6" fill="#a855f7"/>
+    <rect x="85" y="52" width="4" height="8" fill="#a855f7"/>
+    <rect x="90" y="52" width="4" height="8" fill="#a855f7"/>
+    
+    <!-- Strength bars -->
+    <rect x="45" y="80" width="8" height="15" rx="2" fill="#ef4444"/>
+    <rect x="56" y="75" width="8" height="20" rx="2" fill="#f59e0b"/>
+    <rect x="67" y="70" width="8" height="25" rx="2" fill="#eab308"/>
+    <rect x="78" y="65" width="8" height="30" rx="2" fill="#10b981"/>
+  </g>
+  
+  <!-- Icon 4: URL Safety Checker -->
+  <g transform="translate(100, 320)">
+    <rect width="140" height="140" rx="12" fill="#fed7aa" stroke="#f97316" stroke-width="2"/>
+    <text x="70" y="160" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#9a3412" font-weight="bold">
+      URL Safety
+    </text>
+    
+    <!-- Link chain -->
+    <path d="M 50 60 Q 45 55 45 50 Q 45 40 55 40 L 65 40" fill="none" stroke="#f97316" stroke-width="3" stroke-linecap="round"/>
+    <path d="M 90 80 Q 95 85 95 90 Q 95 100 85 100 L 75 100" fill="none" stroke="#f97316" stroke-width="3" stroke-linecap="round"/>
+    
+    <!-- Middle link -->
+    <line x1="62" y1="45" x2="78" y2="95" stroke="#f97316" stroke-width="3" stroke-linecap="round"/>
+    
+    <!-- Warning triangle -->
+    <path d="M 70 50 L 80 68 L 60 68 Z" fill="#fef3c7" stroke="#f59e0b" stroke-width="2"/>
+    <line x1="70" y1="56" x2="70" y2="62" stroke="#f59e0b" stroke-width="2" stroke-linecap="round"/>
+    <circle cx="70" cy="65" r="1.5" fill="#f59e0b"/>
+  </g>
+  
+  <!-- Icon 5: Main Dashboard/Suite Icon -->
+  <g transform="translate(300, 320)">
+    <rect width="140" height="140" rx="12" fill="#e0e7ff" stroke="#6366f1" stroke-width="2"/>
+    <text x="70" y="160" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#3730a3" font-weight="bold">
+      Security Suite
+    </text>
+    
+    <!-- Shield with layers -->
+    <path d="M 70 40 L 90 48 L 90 70 Q 90 85 70 95 Q 50 85 50 70 L 50 48 Z" fill="none" stroke="#6366f1" stroke-width="3"/>
+    <path d="M 70 50 L 85 56 L 85 72 Q 85 82 70 88 Q 55 82 55 72 L 55 56 Z" fill="#6366f1" opacity="0.3"/>
+    
+    <!-- Checkmark -->
+    <path d="M 62 70 L 67 75 L 78 62" fill="none" stroke="#6366f1" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+    
+    <!-- Corner badges -->
+    <circle cx="56" cy="56" r="4" fill="#10b981"/>
+    <circle cx="84" cy="56" r="4" fill="#f59e0b"/>
+    <circle cx="70" cy="88" r="4" fill="#ef4444"/>
+  </g>
+  
+  <!-- Icon 6: Favicon/Logo (Compact) -->
+  <g transform="translate(500, 320)">
+    <rect width="140" height="140" rx="12" fill="#f1f5f9" stroke="#475569" stroke-width="2"/>
+    <text x="70" y="160" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="#1e293b" font-weight="bold">
+      Favicon (16x16)
+    </text>
+    
+    <!-- Compact shield -->
+    <rect x="45" y="45" width="50" height="50" rx="8" fill="#3b82f6"/>
+    <path d="M 70 50 L 85 56 L 85 72 Q 85 82 70 90 Q 55 82 55 72 L 55 56 Z" fill="white" opacity="0.9"/>
+    <path d="M 64 70 L 68 74 L 76 64" fill="none" stroke="#3b82f6" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  
+  <!-- Footer note -->
+  <text x="400" y="570" font-family="Arial, sans-serif" font-size="11" text-anchor="middle" fill="#64748b">
+    All icons are scalable SVG - use in HTML by copying the SVG code or as inline components
+  </text>
+</svg>

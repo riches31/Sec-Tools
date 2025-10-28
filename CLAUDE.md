@@ -26,42 +26,64 @@ This suite helps users:
 
 ```
 /mnt/c/ztemp/projects/Sec-Tools/
-└── old-source/                      # All source files in single directory
-    ├── *.tsx                         # React components (TypeScript JSX)
-    ├── *.ts                          # TypeScript utilities
-    ├── *.html                        # Standalone HTML deployments
-    ├── *.svg                         # Icon assets
-    ├── *.js                          # JavaScript utilities
-    ├── *.md                          # Documentation files
-    └── [no build files/config]       # No package.json, webpack, etc.
+├── src/
+│   ├── components/              # React components (TypeScript)
+│   │   ├── security-dashboard.tsx
+│   │   ├── domain-security-checker.ts
+│   │   ├── password-strength-checker.tsx
+│   │   ├── url-safety-checker.tsx
+│   │   ├── ssl-certificate-analyzer.tsx
+│   │   ├── email-header-analyzer.tsx
+│   │   ├── hash-validator.tsx
+│   │   ├── browser-security-scanner.tsx
+│   │   ├── theme-context.tsx
+│   │   ├── theme-toggle.tsx
+│   │   ├── loading-spinner.tsx
+│   │   ├── history-manager.ts
+│   │   ├── history-panel.tsx
+│   │   └── export-utils.ts
+│   ├── App.tsx                  # Main app component with routing
+│   ├── main.tsx                 # Application entry point
+│   └── index.css                # Tailwind CSS imports
+├── dist/                        # Production build output (generated)
+├── node_modules/                # Dependencies (generated)
+├── index.html                   # HTML entry point
+├── package.json                 # Dependencies and scripts
+├── vite.config.ts               # Vite build configuration
+├── tailwind.config.js           # Tailwind CSS configuration
+├── tsconfig.json                # TypeScript configuration
+└── README.md                    # Main documentation
 ```
 
 ### File Organization
 
-**Component Source Files (TypeScript/React):**
-- `security-dashboard.tsx` - Main dashboard/navigation hub
-- `domain-security-checker.ts` - Domain analysis component
-- `password-strength-checker.tsx` - Password validation component
-- `url-safety-checker.tsx` - URL analysis component
-- `icon-components-code.js` - Custom SVG icon library
+**Source Components (in `/src/components/`):**
+- `security-dashboard.tsx` - Main dashboard with 7 tool cards
+- `domain-security-checker.ts` - Domain analysis with HTTPS, HSTS, headers, WHOIS, CT logs
+- `password-strength-checker.tsx` - Password validation, breach checking, generator
+- `url-safety-checker.tsx` - URL decoding, phishing detection, bulk analysis
+- `ssl-certificate-analyzer.tsx` - Certificate analysis and trust scoring
+- `email-header-analyzer.tsx` - Email header parsing, SPF/DKIM/DMARC validation
+- `hash-validator.tsx` - Hash generation and validation (MD5, SHA-1, SHA-256, SHA-512)
+- `browser-security-scanner.tsx` - Browser security posture assessment
+- `theme-context.tsx` - Dark/light mode context provider
+- `theme-toggle.tsx` - Theme switching component
+- `loading-spinner.tsx` - Loading indicator component
+- `history-manager.ts` - History tracking utility
+- `history-panel.tsx` - History display component
+- `export-utils.ts` - JSON and PDF export functionality
 
-**HTML Deployments:**
-- `browser-scanner-standalone.html` - Browser security tool (complete)
-- `domain-checker-standalone.html` - Domain checker tool (complete)
-- `security-tools-html.html` - Additional HTML version
+**Configuration Files:**
+- `package.json` - Dependencies (React, TypeScript, Vite, Tailwind, Lucide, jsPDF)
+- `vite.config.ts` - Vite build configuration with base path for GitHub Pages
+- `tailwind.config.js` - Tailwind CSS customization
+- `tsconfig.json` - TypeScript compiler configuration
+- `postcss.config.js` - PostCSS plugins for Tailwind
 
 **Documentation:**
-- `sec-tools-project-inventory.md` - File inventory and organization guide
-- `deployment-readme.md` - Deployment instructions
-- `complete-deployment-package.md` - Comprehensive deployment guide
-- `github-desktop-guide.md` - GitHub Desktop setup instructions
-- `master-deployment-checklist.md` - Deployment checklist
-- `zip-structure-visual.md` - File structure visual guide
-- `favicon-package.md` - Icon/favicon documentation
-- `license-file.md` - MIT License template
-
-**Assets:**
-- `security-tools-icons.svg` - Icon SVG definitions
+- `README.md` - Comprehensive user and developer documentation
+- `QUICKSTART.md` - 2-step quick start guide
+- `CLAUDE.md` - Detailed project architecture and reference (this file)
 
 ---
 
@@ -71,33 +93,52 @@ This suite helps users:
 
 | Component | Technology |
 |-----------|-----------|
-| Components | React 18 (via CDN) |
-| Styling | Tailwind CSS |
-| Scripting | JavaScript/TypeScript |
-| Source Transpilation | Babel (JSX → JS) |
-| Icon System | SVG + React |
-| Development Lang | TypeScript (`.ts`, `.tsx`) |
+| UI Framework | React 18 |
+| Language | TypeScript |
+| Build Tool | Vite 6 |
+| Styling | Tailwind CSS 3 |
+| Icon System | Lucide React |
+| PDF Export | jsPDF |
+| Package Manager | npm |
 
-### Runtime Dependencies (CDN)
+### NPM Dependencies
 
-- **React 18:** `https://unpkg.com/react@18/umd/react.production.min.js`
-- **React DOM 18:** `https://unpkg.com/react-dom@18/umd/react-dom.production.min.js`
-- **Babel Standalone:** `https://unpkg.com/@babel/standalone/babel.min.js`
-- **Tailwind CSS:** `https://cdn.tailwindcss.com`
-- **Lucide React Icons:** (referenced but icons are custom SVG)
+**Production:**
+- `react@^18.3.1` - UI library
+- `react-dom@^18.3.1` - React rendering
+- `lucide-react@^0.462.0` - Icon components
+- `jspdf@^2.5.2` - PDF generation
+
+**Development:**
+- `@vitejs/plugin-react@^4.3.4` - React support for Vite
+- `typescript@~5.6.2` - Type checking
+- `tailwindcss@^3.4.17` - Utility-first CSS
+- `postcss@^8.4.49` - CSS processing
+- `autoprefixer@^10.4.20` - CSS vendor prefixes
+- `gh-pages@^6.2.0` - GitHub Pages deployment
 
 ### External APIs
 
 - **Have I Been Pwned API:** Password breach checking (k-anonymity mode)
   - Only first 5 characters of SHA-1 hash sent
   - Optional user-initiated check
+- **crt.sh:** Certificate Transparency log checks
+- **ipify.org:** Public IP address detection
 
-### Build/Deployment Tools
+### Build System
 
-- **No build system configured** - Components meant for:
-  - Direct deployment as HTML + embedded React
-  - Manual conversion from TSX to HTML
-  - Or integration into a React build pipeline
+**Modern Vite-based Pipeline:**
+- **Development:** `npm run dev` - Hot module reload on `localhost:5173`
+- **Production Build:** `npm run build` - Optimized bundle in `/dist`
+- **Preview:** `npm run preview` - Test production build locally
+- **Deployment:** `npm run deploy` - Deploy to GitHub Pages via gh-pages
+
+**Build Output:**
+- TypeScript → JavaScript compilation
+- JSX → React.createElement calls
+- Tailwind CSS → Optimized CSS bundle
+- Tree-shaking and minification
+- Source maps for debugging
 
 ---
 
@@ -222,103 +263,171 @@ This suite helps users:
 
 ---
 
-### 5. Icon System (`icon-components-code.js`)
-**Purpose:** Reusable SVG icon components
+### 5. Theme System (`theme-context.tsx`, `theme-toggle.tsx`)
+**Purpose:** Dark/light mode management across the application
 
-**Included Icons:**
-- `BrowserSecurityIcon` - Globe with security shield
-- `DomainSecurityIcon` - Server with lock
-- `PasswordSecurityIcon` - Key with strength bars
-- `URLSecurityIcon` - Link chain with warning
-- `SecuritySuiteIcon` - Main shield logo
-- Individual lucide icons (Shield, Globe, Lock, etc.)
+**Features:**
+- Context-based theme state management
+- Persistent theme preference in localStorage
+- Smooth transitions between themes
+- Toggle button with sun/moon icons
+- Glassmorphic styling adapted to theme
+
+**Key Functions:**
+- `ThemeProvider` - Context provider component
+- `useTheme()` - Hook to access/toggle theme
+- Theme-specific CSS classes for all components
 
 ---
 
 ## Deployment Architecture
 
-### Deployment Options
+### Current Deployment: GitHub Pages
 
-#### Option 1: GitHub Pages (Recommended)
-- **Static hosting:** No backend required
-- **URL:** `https://yourusername.github.io/security-tools-suite/`
-- **Setup time:** 20 minutes
-- **Tools ready:** Browser Scanner + Domain Checker
+**Automated Deployment Process:**
+```bash
+npm run deploy
+```
 
-#### Option 2: Netlify Drop
-- Drag-and-drop deployment
+This command:
+1. Runs `npm run build` to create optimized production bundle in `/dist`
+2. Uses `gh-pages` package to push `/dist` contents to `gh-pages` branch
+3. GitHub automatically serves from `gh-pages` branch
+
+**Live URL:** `https://riches31.github.io/Sec-Tools/`
+
+**Configuration:**
+- `vite.config.ts` sets `base: '/Sec-Tools/'` for correct asset paths
+- GitHub Pages enabled in repository settings
+- Serves from `gh-pages` branch automatically
+
+### Alternative Deployment Options
+
+#### Option 1: Netlify
+```bash
+npm run build
+# Drag /dist folder to netlify.com/drop
+```
 - Instant CDN distribution
+- Free tier with custom domain support
+- Automatic HTTPS
+
+#### Option 2: Vercel
+```bash
+npm run build
+vercel --prod
+```
+- Zero-config deployment
+- Edge network distribution
 - Free tier available
 
-#### Option 3: Vercel
-- CLI-based deployment
-- Zero-config option
-- Free tier available
-
-#### Option 4: Traditional Hosting
-- FTP/SFTP upload to any server
+#### Option 3: Traditional Hosting
+```bash
+npm run build
+# Upload /dist folder contents via FTP/SFTP
+```
+- Any static web server
+- Apache, Nginx, etc.
 - Shared hosting compatible
-- Custom domain support
 
-### File Structure for Deployment
+### Build Output Structure
 
+After `npm run build`, the `/dist` directory contains:
 ```
-security-tools-suite/
-├── index.html                    (Main dashboard)
-├── README.md                     (Documentation)
-├── LICENSE                       (MIT License)
-│
-├── tools/
-│   ├── browser-scanner.html     (Standalone tool)
-│   ├── domain-checker.html      (Standalone tool)
-│   ├── password-checker.html    (Optional)
-│   └── url-checker.html         (Optional)
-│
-└── docs/
-    └── screenshots/
-        └── .gitkeep
+dist/
+├── index.html                    # Entry point
+├── assets/
+│   ├── index-[hash].js          # Bundled JavaScript
+│   ├── index-[hash].css         # Bundled CSS
+│   └── [other assets]           # Fonts, images, etc.
+└── vite.svg                     # Favicon
 ```
+
+**Optimizations Applied:**
+- Minified JavaScript and CSS
+- Tree-shaken dependencies (unused code removed)
+- Hashed filenames for cache busting
+- Compressed assets
+- Single-page application (SPA) routing
 
 ---
 
 ## Development Workflow
 
-### Converting TSX to HTML
+### Local Development
 
-The project uses a **browser-based React approach** without build tools:
+**Setup:**
+```bash
+# Clone the repository
+git clone https://github.com/riches31/Sec-Tools.git
+cd Sec-Tools
 
-1. **Original:** TypeScript/React components (`.tsx` files)
-2. **Conversion:** Embed component code in HTML `<script type="text/babel">`
-3. **Dependencies:** Load React/Babel/Tailwind from CDN
-4. **Deployment:** Single HTML file with embedded logic
+# Install dependencies
+npm install
 
-**Example Structure:**
-```html
-<!DOCTYPE html>
-<html>
-<head>
-    <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-    <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-<body>
-    <div id="root"></div>
-    <script type="text/babel">
-        // Component code here (from .tsx file)
-        ReactDOM.createRoot(document.getElementById('root')).render(<Component />);
-    </script>
-</body>
-</html>
+# Start development server
+npm run dev
 ```
 
-### No Build System
+**Development Server:**
+- Runs on `http://localhost:5173`
+- Hot Module Replacement (HMR) - instant updates on file save
+- TypeScript type checking in real-time
+- Tailwind CSS classes processed on-the-fly
 
-- **No:** webpack, parcel, esbuild, vite
-- **No:** package.json, node_modules
-- **No:** npm/yarn scripts
-- **No:** TypeScript compilation step
-- **Approach:** Direct code inclusion + CDN dependencies
+### Creating New Components
+
+**Step 1:** Create component file in `/src/components/`
+```typescript
+// src/components/new-feature.tsx
+import React, { useState } from 'react';
+import { Shield } from 'lucide-react';
+import { useTheme } from './theme-context';
+
+export const NewFeature: React.FC = () => {
+  const { theme } = useTheme();
+  const [result, setResult] = useState<string>('');
+
+  // Component logic here
+
+  return (
+    <div className={/* glassmorphic styles */}>
+      {/* Component JSX */}
+    </div>
+  );
+};
+```
+
+**Step 2:** Add route in `/src/App.tsx`
+```typescript
+import { NewFeature } from './components/new-feature';
+
+// Add to tool cards and routing logic
+```
+
+**Step 3:** Test locally with `npm run dev`
+
+### Building for Production
+
+```bash
+# Create optimized production build
+npm run build
+
+# Preview production build locally
+npm run preview
+
+# Deploy to GitHub Pages
+npm run deploy
+```
+
+### Code Style & Conventions
+
+- **TypeScript:** Strict mode enabled, explicit types preferred
+- **Components:** Functional components with hooks
+- **Styling:** Tailwind utility classes, glassmorphic design pattern
+- **State:** useState for local state, Context for global theme
+- **Icons:** Lucide React icons (consistent sizing and styling)
+- **Naming:** PascalCase for components, camelCase for functions/variables
 
 ---
 
@@ -528,21 +637,36 @@ const calculateScore = (factors) => {
 
 ## Dependencies Summary
 
-### Runtime (No Installation Required - CDN)
+### Installation Required
+
+**Install all dependencies:**
+```bash
+npm install
+```
+
+This installs:
 
 | Package | Purpose | Version |
 |---------|---------|---------|
-| React | UI library | 18+ |
-| React DOM | React rendering | 18+ |
-| Babel Standalone | JSX transpilation | Latest |
-| Tailwind CSS | Styling framework | Latest |
+| react | UI library | ^18.3.1 |
+| react-dom | React rendering | ^18.3.1 |
+| lucide-react | Icon components | ^0.462.0 |
+| jspdf | PDF generation | ^2.5.2 |
+| vite | Build tool | ^6.0.5 |
+| typescript | Type checking | ~5.6.2 |
+| tailwindcss | Styling | ^3.4.17 |
+| @vitejs/plugin-react | Vite React plugin | ^4.3.4 |
+| gh-pages | Deployment | ^6.2.0 |
 
-### No External Packages
+**Total installed size:** ~162MB (includes all dependencies)
+**Install time:** ~30 seconds on average connection
 
-- No npm packages required
-- No node_modules
-- No build step needed
-- Pure client-side application
+### Runtime Characteristics
+
+- **Client-side only:** No backend server needed
+- **Build process:** Required for deployment (generates optimized bundle)
+- **Development:** npm packages required for local dev server
+- **Production:** Serves static files from `/dist`
 
 ---
 
@@ -550,31 +674,92 @@ const calculateScore = (factors) => {
 
 ### Adding a New Tool
 
-1. Create `new-tool-checker.tsx` component
-2. Convert to HTML wrapper following existing patterns
-3. Add route to dashboard
-4. Create HTML file in `tools/` directory
-5. Update README with new tool
+1. **Create component** in `/src/components/new-tool.tsx`:
+   ```typescript
+   export const NewTool: React.FC = () => {
+     const { theme } = useTheme();
+     // Component implementation
+   };
+   ```
+
+2. **Add to dashboard** in `/src/components/security-dashboard.tsx`:
+   - Add new tool card with icon, description, features
+   - Update tool count if displayed
+
+3. **Add routing** in `/src/App.tsx`:
+   ```typescript
+   import { NewTool } from './components/new-tool';
+   // Add to route switch/if statement
+   ```
+
+4. **Test locally:**
+   ```bash
+   npm run dev
+   ```
+
+5. **Deploy:**
+   ```bash
+   npm run deploy
+   ```
 
 ### Adding New Security Checks
 
-1. Create check function following pattern:
-   ```javascript
-   const checkNewThing = async (input) => {
-       try { /* logic */ }
-       catch (e) { /* error handling */ }
+1. **Create check function:**
+   ```typescript
+   const checkNewThing = async (input: string): Promise<CheckResult> => {
+     try {
+       // Analysis logic
+       return { success: true, data: result };
+     } catch (error) {
+       return { success: false, error: error.message };
+     }
    };
    ```
-2. Call from main analysis function
-3. Include in results display
-4. Update scoring if applicable
 
-### Changing Color Scheme
+2. **Integrate into component:**
+   - Call from analysis function
+   - Update results state
+   - Display in results UI
+   - Update scoring/risk calculation
 
-Find and replace in all HTML files:
-- `bg-blue-600` → `bg-custom-color-600`
-- `text-blue-600` → `text-custom-color-600`
-- `border-blue-200` → `border-custom-color-200`
+3. **Add to history tracking** (if applicable)
+
+4. **Add export support** in results display
+
+### Customizing Theme Colors
+
+**Option 1: Modify Tailwind Config**
+Edit `tailwind.config.js`:
+```javascript
+module.exports = {
+  theme: {
+    extend: {
+      colors: {
+        'custom-blue': '#your-color',
+      },
+    },
+  },
+};
+```
+
+**Option 2: Update Component Classes**
+Find and replace in component files:
+- `bg-blue-500/10` → `bg-custom-blue-500/10`
+- `text-blue-400` → `text-custom-blue-400`
+- `border-blue-500/20` → `border-custom-blue-500/20`
+
+### Adding New NPM Packages
+
+```bash
+# Install production dependency
+npm install package-name
+
+# Install dev dependency
+npm install -D package-name
+
+# Update imports in components
+import { Something } from 'package-name';
+```
 
 ---
 
@@ -628,32 +813,53 @@ Find and replace in all HTML files:
 
 ### Pre-Deployment
 
-- [ ] All HTML files created from TSX components
-- [ ] File structure organized correctly
-- [ ] README customized with your username
-- [ ] LICENSE updated with your name
-- [ ] All links tested locally
+- [ ] All dependencies installed (`npm install`)
+- [ ] Local development server working (`npm run dev`)
+- [ ] All 7 tools tested and functional
+- [ ] No TypeScript errors (`npm run build` succeeds)
+- [ ] Theme toggle works (dark/light mode)
+- [ ] History tracking works
+- [ ] Export functionality works (JSON/PDF)
 - [ ] Mobile responsiveness verified
-- [ ] All external APIs functional
+- [ ] All external APIs functional (HIBP, crt.sh, ipify)
 
 ### Deployment
 
 - [ ] Repository created on GitHub
-- [ ] Files pushed to main branch
-- [ ] GitHub Pages enabled
-- [ ] Site published at correct URL
-- [ ] Tools load without errors
-- [ ] Back navigation works
-- [ ] Images/icons display correctly
+- [ ] Source code pushed to `main` branch
+- [ ] `vite.config.ts` has correct `base` path
+- [ ] Run `npm run deploy` successfully
+- [ ] GitHub Pages enabled in repository settings
+- [ ] Source set to `gh-pages` branch
+- [ ] Wait 2-3 minutes for GitHub Pages to build
 
-### Post-Deployment
+### Post-Deployment Verification
 
-- [ ] Visit live URL
-- [ ] Test all tools
-- [ ] Share on social media
-- [ ] Add to GitHub profile
-- [ ] Monitor for issues
-- [ ] Plan additional features
+- [ ] Visit live URL (`https://yourusername.github.io/repo-name/`)
+- [ ] Dashboard loads with all tool cards
+- [ ] Test each tool individually:
+  - [ ] Domain Security Checker
+  - [ ] Password Strength Checker
+  - [ ] URL Safety Checker
+  - [ ] SSL/TLS Certificate Analyzer
+  - [ ] Email Header Analyzer
+  - [ ] Hash & Checksum Validator
+  - [ ] Browser Security Scanner
+- [ ] Navigation between tools works
+- [ ] Back button returns to dashboard
+- [ ] Theme toggle persists across page reloads
+- [ ] History saves and loads correctly
+- [ ] Export buttons work
+- [ ] Mobile layout works (test on phone/tablet)
+- [ ] No console errors (F12 → Console)
+
+### Maintenance
+
+- [ ] Monitor GitHub Issues for bug reports
+- [ ] Update dependencies periodically (`npm update`)
+- [ ] Add new features based on user feedback
+- [ ] Keep documentation up to date
+- [ ] Redeploy after changes (`npm run deploy`)
 
 ---
 
@@ -668,42 +874,87 @@ Find and replace in all HTML files:
 
 ## Quick Start Commands
 
-### For Deployment
+### For Development
 
 ```bash
 # Clone repository
-git clone https://github.com/yourusername/security-tools-suite.git
-cd security-tools-suite
+git clone https://github.com/riches31/Sec-Tools.git
+cd Sec-Tools
 
-# Create structure
-mkdir -p tools docs/screenshots
-touch docs/screenshots/.gitkeep
+# Install dependencies
+npm install
 
-# Copy files to correct locations
-# index.html → root
-# browser-scanner.html → tools/
-# domain-checker.html → tools/
+# Start development server
+npm run dev
 
-# Commit and push
-git add .
-git commit -m "Initial commit: Add security tools suite"
-git push origin main
+# Open browser to http://localhost:5173
+```
 
-# Enable GitHub Pages in repository settings
+### For Deployment
+
+```bash
+# Build and deploy to GitHub Pages
+npm run deploy
+
+# Or manually:
+npm run build           # Creates /dist folder
+npm run preview         # Test production build locally
+
+# Deploy /dist to GitHub Pages
+git add dist -f         # Force add (usually gitignored)
+git commit -m "Build"
+git subtree push --prefix dist origin gh-pages
+```
+
+### For New Repository Setup
+
+```bash
+# Create new repository on GitHub first, then:
+git clone https://github.com/yourusername/new-repo.git
+cd new-repo
+
+# Copy source files from this project
+# Then:
+npm install
+npm run dev              # Test locally
+npm run deploy           # Deploy to GitHub Pages
+
+# Enable GitHub Pages in repository settings:
+# Settings → Pages → Source: gh-pages branch
 ```
 
 ---
 
 ## Summary
 
-This is a **lightweight, privacy-focused security tools suite** built with React and Tailwind CSS. The architecture emphasizes:
+This is a **modern, privacy-focused security tools suite** built with React, TypeScript, and Tailwind CSS. The architecture emphasizes:
 
-- **No backend required** - Pure client-side processing
-- **Easy deployment** - Static files to any web host
-- **No build tools** - Works directly in browser
-- **Privacy-first** - Minimal external API usage
-- **Educational value** - Learn about web security
-- **Extensible** - Easy to add new tools
+- **Modern build system** - Vite for lightning-fast development and optimized production builds
+- **Type safety** - Full TypeScript support for robust code
+- **No backend required** - Pure client-side processing (runs in browser)
+- **Easy deployment** - One command to deploy to GitHub Pages (`npm run deploy`)
+- **Privacy-first** - Minimal external API usage, data stays in browser
+- **Feature-rich** - 7 comprehensive security tools with export and history
+- **Beautiful UI** - Glassmorphic design with dark/light mode
+- **Educational value** - Learn about web security concepts
+- **Extensible** - Easy to add new tools and features
+- **Developer-friendly** - Hot reload, TypeScript, modern tooling
 
-Perfect for personal use, portfolio projects, educational demonstrations, and open-source contributions to internet security.
+Perfect for:
+- Personal security assessments
+- Educational demonstrations
+- Portfolio projects
+- Security research
+- Open-source contributions
+- Learning modern web development
+
+**Tech Highlights:**
+- React 18 with functional components and hooks
+- TypeScript for type safety
+- Vite 6 for blazing-fast development
+- Tailwind CSS 3 for modern styling
+- Lucide React for beautiful icons
+- jsPDF for report generation
+- localStorage for persistent history
+- Context API for theme management
 

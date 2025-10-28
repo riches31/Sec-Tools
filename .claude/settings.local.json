@@ -7,7 +7,14 @@
       "Bash(git init:*)",
       "Bash(test:*)",
       "Bash(git branch:*)",
-      "Bash(git config:*)"
+      "Bash(git config:*)",
+      "Bash(git -C /mnt/c/ztemp/projects/Sec-Tools branch:*)",
+      "Bash(git -C /mnt/c/ztemp/projects/Sec-Tools status --short)",
+      "Bash(find:*)",
+      "Bash(git -C /mnt/c/ztemp/projects/Sec-Tools log --all --decorate --oneline --graph -10)",
+      "Bash(awk:*)",
+      "Bash(git add:*)",
+      "Bash(git commit:*)"
     ],
     "deny": [],
     "ask": []

@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm install react-router-dom)",
+      "Bash(npm run build:*)",
+      "Bash(tree:*)",
+      "Bash(git init:*)",
+      "Bash(test:*)",
+      "Bash(git branch:*)",
+      "Bash(git config:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

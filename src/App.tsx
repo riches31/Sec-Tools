@@ -15,7 +15,7 @@ const BrowserSecurityScanner = lazy(() => import('./components/browser-security-
 
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename="/Sec-Tools">
       <ThemeProvider>
         <Suspense fallback={<LoadingSpinner />}>
           <Routes>
